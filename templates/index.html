@@ -3,20 +3,48 @@
 <head>
     <title>Long Weekend Finder</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .form-container { margin-bottom: 20px; }
-        table { border-collapse: collapse; width: 60%; margin-top: 20px; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-        th { background-color: #f2f2f2; }
-        .error { color: red; }
-        .success { color: green; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 6px;
+            font-size: 14px;
+        }
+        button {
+            padding: 6px 12px;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+        }
+        .message {
+            color: green;
+        }
     </style>
 </head>
 <body>
     <h1>Long Weekend Finder</h1>
     <div class="form-container">
         <form method="get">
-            <label for="country_code">Country Code (e.g., IN, US):</label>
+            <label for="country_code">Country Code (e.g., US, DE):</label>
             <input type="text" id="country_code" name="country_code" required>
             <button type="submit" name="action" value="all">Get All Long Weekends</button>
             <button type="submit" name="action" value="next">Get Next Long Weekend</button>
@@ -26,7 +54,7 @@
         <p class="error">{{ error }}</p>
     {% endif %}
     {% if message %}
-        <p class="success">{{ message }}</p>
+        <p class="message">{{ message }}</p>
     {% endif %}
     {% if long_weekends %}
         <h2>Long Weekends</h2>
@@ -34,7 +62,7 @@
             <tr>
                 <th>Start Date</th>
                 <th>End Date</th>
-                <th>Length (days)</th>
+                <th>Length (Days)</th>
             </tr>
             {% for lw in long_weekends %}
             <tr>
